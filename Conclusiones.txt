@@ -1,0 +1,16 @@
+# Conclusiones
+
+Flujos que pueden abstraerse para el E2E de la tienda:
+- Existencia de productos en el catálogo
+- Existencia de productos por categoría
+- Composición correcta de un producto
+- Agregar productos al carrito de compra
+- Eliminar productos del carrito de compra
+- Validar comportamiento ante compra de carritos vacíos
+- Validar generación de comprobante de comprar con la información correspondiente
+- Confirmar compra de carrito ingresado todos los campos del formulario
+- Confirmar compra de carrito sin ingresar ningun valor a los campos del formulario
+- Confirmar compra de carrito ingresado solo valores a los campos obligatorios del formulario
+
+Existen algunos flujos sin cubrir por la lógica de desarrollo para el E2E de la tienda, por ejemplo:
+- Validar comportamiento ante compra de carritos vacíos
