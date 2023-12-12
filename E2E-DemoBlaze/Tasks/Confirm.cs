@@ -30,13 +30,10 @@ namespace E2E_DemoBlaze.Tasks
 
         public static void infoDialog(IWebDriver driver)
         {
-            //Press Enter to Close dialog
-            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-           Thread.Sleep(2000); 
+            Thread.Sleep(2000); 
             IAlert alert = driver.SwitchTo().Alert();
             Thread.Sleep(1000);
             alert.Accept();
-            //driver.SwitchTo().ActiveElement().SendKeys("Intro");
         }
     }
 }

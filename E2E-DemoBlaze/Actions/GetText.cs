@@ -12,9 +12,9 @@ namespace E2E_DemoBlaze.Actions
     {
         public static string TextFrom(IWebDriver driver, By locator)
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+
+            Thread.Sleep(2000);
             string text =  driver.FindElement(locator).Text.ToString();
-            Console.Write(text);
             return text;
         }
     }

@@ -14,52 +14,33 @@ namespace E2E_DemoBlaze.Tests
     public class DemoBlazeTest : BaseTest
     {
         [Test]
-        public void LoadHome()
-        {
-            Assert.That(("PRODUCT STORE").Equals( GetText.TextFrom(driver, DemoBlazeUI.homePageTitle)), "Entramos a DemoBlaze", driver);
-            GoTo.homePage(driver);
-            Assert.IsTrue(IsDisplayed.element(driver, DemoBlazeUI.homeMenu), "El menú principal NO es visible");
-        }
-
-        [Test]
-        public void AddToCart()
-        {
-            GoTo.homePage(driver);
-            FilterBy.phoneCategory(driver);
-            Select.phoneItem(driver);
-            Assert.IsTrue(IsDisplayed.element(driver, DemoBlazeUI.priceContainer), "No hemos abierto el detalle del producto");
-            Confirm.addItem(driver);
-            Confirm.infoDialog(driver);
-           
-            GoTo.homePage(driver);
-            FilterBy.monitorCategory(driver);
-            Select.monitorItem(driver); 
-            Assert.IsTrue(IsDisplayed.element(driver, DemoBlazeUI.priceContainer), "No hemos abierto el detalle del producto");
-            Confirm.addItem(driver);
-            Confirm.infoDialog(driver);
-            GoTo.cartPage(driver);
-        }
-
-        [Test]
         public void fillPurchaseForm()
         {
             GoTo.homePage(driver);
             FilterBy.phoneCategory(driver);
             Select.phoneItem(driver);
+
+            Assert.IsTrue(IsDisplayed.element(driver, DemoBlazeUI.addToCartButton), "No hemos abierto el detalle del producto");
+
             Confirm.addItem(driver);
             Confirm.infoDialog(driver);
 
             GoTo.homePage(driver);
             FilterBy.monitorCategory(driver);
             Select.monitorItem(driver);
-            Assert.IsTrue(IsDisplayed.element(driver, DemoBlazeUI.priceContainer), "No hemos abierto el detalle del producto");
+            Assert.IsTrue(IsDisplayed.element(driver, DemoBlazeUI.addToCartButton), "No hemos abierto el detalle del producto");
 
             Confirm.addItem(driver);
             Confirm.infoDialog(driver);
             GoTo.cartPage(driver);
 
+            Assert.IsTrue(IsDisplayed.element(driver, DemoBlazeUI.cartList), "No hemos encontrado el detalle del carrito de compras");
             Confirm.cart(driver);
-            //Add Assert
+            Assert.IsTrue(IsDisplayed.element(driver, DemoBlazeUI.orderDataModal), "No se abrio el formulario de confirmación de compra");
+            Assert.That(("Place order").Equals(GetText.TextFrom(driver, DemoBlazeUI.orderDataModal)), "No se abrio el formulario de confirmación de compra.", driver);
+
+            Confirm.purchase(driver);
+            Confirm.infoDialog(driver);
 
             FillForm.Set(driver, DemoBlazeUI.orderDataName, "Nombre Test");
             FillForm.Set(driver, DemoBlazeUI.orderDataCountry, "España");
@@ -69,6 +50,7 @@ namespace E2E_DemoBlaze.Tests
             FillForm.Set(driver, DemoBlazeUI.orderDataYear, "2023");
 
             Confirm.purchase(driver);
+            Assert.That(("Thank you for your purchase!").Equals(GetText.TextFrom(driver, DemoBlazeUI.confirmPurchaseModal)), "No se completó la compra.", driver);
         }
     }
 }

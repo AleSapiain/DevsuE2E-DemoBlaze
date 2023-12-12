@@ -11,7 +11,7 @@ namespace E2E_DemoBlaze.Actions
     {
         public static bool element(IWebDriver driver, By locator)
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            Thread.Sleep(2000); 
             return driver.FindElement(locator).Displayed;
         }
     }

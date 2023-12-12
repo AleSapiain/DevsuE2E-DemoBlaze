@@ -33,6 +33,9 @@ namespace E2E_DemoBlaze.UI
         public static By orderDataMonth = By.CssSelector("#month");
         public static By orderDataYear = By.CssSelector("#year");
         public static By orderDataConfirmPurchase = By.XPath("/html/body/div[3]/div/div/div[3]/button[2]");
+
+        public static By cartList = By.CssSelector("#page-wrapper > div > div.col-lg-8 > div > table");
+        public static By orderDataModal = By.XPath("/html/body/div[3]/div/div/div[1]/h5");
         public static By confirmPurchaseModal = By.CssSelector("body > div.sweet-alert.showSweetAlert.visible > h2");
     }
 }

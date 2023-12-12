@@ -12,6 +12,7 @@ namespace E2E_DemoBlaze.Tasks
         public static void Set(IWebDriver driver, By locator, string critery)
         {
             driver.FindElement(locator).SendKeys(critery);
+            Thread.Sleep(1000);
         }
     }
 }
